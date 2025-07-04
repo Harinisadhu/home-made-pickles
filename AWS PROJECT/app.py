@@ -18,6 +18,9 @@ orders_table = None
 local_users = {}
 local_orders = []
 
+# Read SNS Topic ARN from environment variable
+sns_topic_arn = os.environ.get('SNS_TOPIC_ARN')
+
 try:
     session_boto = boto3.Session()
     dynamodb = session_boto.resource('dynamodb', region_name='ap-south-1')
@@ -142,9 +145,17 @@ def buynow():
             try:
                 orders_table.put_item(Item=order)
                 message = f"Hi {name}, your order {order_id} is confirmed. Total ₹{total}."
-                sns.publish(PhoneNumber='+91' + phone, Message=message)
+
+                if sns_topic_arn:
+                    sns.publish(
+                        TopicArn=sns_topic_arn,
+                        Message=message,
+                        Subject='Order Confirmation'
+                    )
+                else:
+                    print("SNS_TOPIC_ARN not set. Skipping SNS publish.")
             except ClientError as e:
-                print("Error sending SMS or saving order:", e)
+                print("Error sending SNS notification or saving order:", e)
         else:
             local_orders.append(order)
 
@@ -159,9 +170,8 @@ def feedback():
         email = request.form.get('email')
         message = request.form.get('message')
         print(f"Feedback received from {name} ({email}): {message}")
-        return redirect(url_for('thanku'))  # ✅ this goes to thanku.html
+        return redirect(url_for('thanku'))
     return render_template('feedback.html')
-
 
 @app.route('/thanku')
 def thanku():

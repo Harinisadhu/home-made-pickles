@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome - Home Pickles</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #000, #330000);
+      color: white;
+    }
+
+    header {
+      width: 100%;
+      background-color: black;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: red;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: red;
+    }
+
+    .welcome-container {
+      max-width: 800px;
+      padding: 40px;
+      text-align: center;
+      margin: 140px auto 0; /* push content below navbar */
+    }
+
+    .welcome-title {
+      font-size: 48px;
+      color: red;
+      margin-bottom: 20px;
+    }
+
+    .welcome-subtitle {
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: #ccc;
+    }
+
+    .enter-btn {
+      padding: 15px 40px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      background-color: red;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .enter-btn:hover {
+      background-color: darkred;
+    }
+
+    .logo-img {
+      max-width: 200px;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Home <span>Pickles</span></div>
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('shop') }}">Shop</a></li>
+        <li><a href="#Cart">Cart</a></li>
+        <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+      </ul>
+    </nav>
+  </header>
+   <div class="welcome-container">
+    <img src="/static/logo 2.png" alt="Home Pickles Logo" class="logo-img" />
+    <h1 class="welcome-title">Welcome to Home Pickles</h1>
+    <p class="welcome-subtitle">Delicious Homemade Pickles & Snacks</p>
+     </div>
+
+</body>
+</html>

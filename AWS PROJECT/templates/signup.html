@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signup - Home Pickles</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      min-height: 100vh;
+      background: url('/static/pickles 2.jpg') no-repeat right center;
+      background-color: black;
+      background-size: contain;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: #000;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: red;
+    }
+
+    nav a {
+      margin: 0 15px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: red;
+    }
+
+    .form-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.7); /* Slight overlay for better contrast */
+    }
+
+    .form-box {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .form-box h2 {
+      text-align: center;
+      color: red;
+      margin-bottom: 20px;
+    }
+
+    .form-box input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background: #222;
+      color: white;
+    }
+
+    .form-box button {
+      width: 100%;
+      padding: 12px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .form-box button:hover {
+      background: darkred;
+    }
+
+    .form-box p {
+      margin-top: 15px;
+      text-align: center;
+      color: #ccc;
+    }
+
+    .form-box a {
+      color: red;
+      text-decoration: none;
+    }
+
+    .form-box a:hover {
+      text-decoration: underline;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Home <span>Pickles</span></div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/shop">Shop</a>
+    </nav>
+  </header>
+
+  <section class="form-section">
+    <div class="form-box">
+      <h2>Sign Up</h2>
+      <form method="POST" action="/signup" onsubmit="return validateSignup()">
+        <input type="text" name="fullname" id="fullname" placeholder="Full Name" required />
+        <input type="email" name="email" id="email" placeholder="Email" required />
+        <input type="password" name="password" id="password" placeholder="Create Password" required />
+        <input type="password" name="confirm" id="confirm" placeholder="Confirm Password" required />
+        <button type="submit">Sign Up</button>
+        <p class="error" id="errorMsg"></p>
+      </form>
+      <p>Already have an account? <a href="/login">Login</a></p>
+    </div>
+  </section>
+
+  <script>
+    function validateSignup() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const confirm = document.getElementById("confirm").value.trim();
+      const errorMsg = document.getElementById("errorMsg");
+
+      if (!email.includes("@")) {
+        errorMsg.textContent = "Enter a valid email address.";
+        return false;
+      }
+
+      if (password.length < 5) {
+        errorMsg.textContent = "Password must be at least 5 characters.";
+        return false;
+      }
+
+      if (password !== confirm) {
+        errorMsg.textContent = "Passwords do not match.";
+        return false;
+      }
+
+      errorMsg.textContent = "";
+      return true;
+    }
+  </script>
+
+</body>
+</html>

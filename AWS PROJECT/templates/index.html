@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home Pickles</title>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
+      background: url('/static/pickles 2.jpg') no-repeat center center/cover;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right;
+      background-color: black;
+      height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: red;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .auth-buttons a {
+      text-decoration: none;
+      color: white;
+      background-color: red;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .auth-buttons a:hover {
+      background-color: darkred;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 40px;
+    }
+
+    .hero-text {
+      max-width: 50%;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .hero-text p {
+      font-size: 16px;
+      color: #ccc;
+    }
+
+    #about h2 {
+      color: red;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    #about p {
+      max-width: 800px;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Home <span>Pickles</span></div>
+    <div class="auth-buttons">
+      <a href="{{ url_for('login') }}">Login</a>
+      <a href="{{ url_for('signup') }}">Signup</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Healthy Pickles and Snacks</h1>
+      <p>Homemade Goodness in Every Crunch</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      Welcome to <strong>Home Pickles</strong>! We specialize in crafting homemade pickles and snacks using traditional recipes passed down through generations. Every jar is packed with natural flavors, fresh ingredients, and the love of home cooking. Whether you're a fan of spicy, sweet, or sour, our pickles will surely add zing to your meals!
+    </p>
+  </section>
+
+  <section id="contact" style="margin-top: 40px; padding: 20px;">
+    <h2 style="color: red; font-size: 32px; margin-bottom: 20px;">Contact Us</h2>
+    <p style="font-size: 16px; line-height: 1.6;">
+      <strong>Email:</strong> contact@homepickles.com<br>
+      <strong>Phone:</strong> +91 98765 43210
+    </p>
+  </section>
+</body>
+</html>

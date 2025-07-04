@@ -1,0 +1,165 @@
+<!-- Menu Section -->
+<section id="menu" style="padding: 60px 40px; background-color: #1a1a1a;">
+
+  <!-- Cart Button with Flask -->
+  <a href="{{ url_for('cart') }}" style="position:fixed;top:20px;right:20px;background:red;color:white;padding:10px 15px;border-radius:5px;text-decoration:none;z-index:999;">
+    View Cart
+</a>
+
+  <!-- Button Styles -->
+  <style>
+    .add-to-cart {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .add-to-cart:hover {
+      background-color: darkred;
+    }
+  </style>
+
+  <!-- Veg Pickles -->
+  <h2 style="color: red; font-size: 32px; margin-bottom: 20px;">Veg Pickles</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 50px;">
+
+    <!-- Veg Items -->
+    <div style="background: #333; padding: 20px; border-radius: 10px; text-align: center;">
+      <img src="/static/mango pickle.jpg" alt="Spicy Mango Pickle" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+      <h3 style="color: white; margin-top: 15px;">Spicy Mango Pickle</h3>
+      <p style="color: #ccc;">Raw mangoes with crushed mustard and fiery red chilies.</p>
+      <p style="color: red; font-weight: bold;">₹120 / 250g</p>
+      <button class="add-to-cart" data-name="Spicy Mango Pickle" data-price="120" data-image="/static/mango pickle.jpg">Add to Cart</button>
+    </div>
+
+    <div style="background: #333; padding: 20px; border-radius: 10px; text-align: center;">
+      <img src="/static/lemon garlic pickle.jpg" alt="Lemon Garlic Pickle" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+      <h3 style="color: white; margin-top: 15px;">Lemon Garlic Pickle</h3>
+      <p style="color: #ccc;">Zesty lemons and whole garlic pods with bold spices.</p>
+      <p style="color: red; font-weight: bold;">₹100 / 200g</p>
+      <button class="add-to-cart" data-name="Lemon Garlic Pickle" data-price="100" data-image="/static/lemon garlic pickle.jpg">Add to Cart</button>
+    </div>
+
+    <div style="background: #333; padding: 20px; border-radius: 10px; text-align: center;">
+      <img src="/static/gooseberry pickle.jpg" alt="Gooseberry Pickle" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+      <h3 style="color: white; margin-top: 15px;">Gooseberry (Amla) Pickle</h3>
+      <p style="color: #ccc;">Health-packed gooseberries spiced to perfection.</p>
+      <p style="color: red; font-weight: bold;">₹110 / 200g</p>
+      <button class="add-to-cart" data-name="Gooseberry Pickle" data-price="110" data-image="/static/gooseberry pickle.jpg">Add to Cart</button>
+    </div>
+
+    <div style="background: #333; padding: 20px; border-radius: 10px; text-align: center;">
+      <img src="/static/Cauli-pickle.jpg" alt="CauliFlower Pickle" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+      <h3 style="color: white; margin-top: 15px;">CauliFlower Pickle</h3>
+      <p style="color: #ccc;">Cauliflower blended in tangy masala.</p>
+      <p style="color: red; font-weight: bold;">₹130 / 300g</p>
+      <button class="add-to-cart" data-name="CauliFlower Pickle" data-price="130" data-image="/static/Cauli-pickle.jpg">Add to Cart</button>
+    </div>
+
+    <div style="background: #333; padding: 20px; border-radius: 10px; text-align: center;">
+      <img src="/static/green chillies2.jpg" alt="Green Chili Pickle" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+      <h3 style="color: white; margin-top: 15px;">Green Chili Pickle</h3>
+      <p style="color: #ccc;">Hot and tangy, perfect for spice lovers!</p>
+      <p style="color: red; font-weight: bold;">₹90 / 150g</p>
+      <button class="add-to-cart" data-name="Green Chili Pickle" data-price="90" data-image="/static/green chillies2.jpg">Add to Cart</button>
+    </div>
+
+  </div>
+
+  <!-- Non-Veg Pickles -->
+  <h2 style="color: red; font-size: 32px; margin-bottom: 20px;">Non-Veg Pickles</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 50px;">
+
+    <div style="background: #333; padding: 20px; border-radius: 10px; text-align: center;">
+      <img src="/static/spicy chicken pickle.jpg" alt="Chicken Pickle" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+      <h3 style="color: white; margin-top: 15px;">Spicy Chicken Pickle</h3>
+      <p style="color: #ccc;">Tender chicken chunks marinated in traditional spices.</p>
+      <p style="color: red; font-weight: bold;">₹180 / 250g</p>
+      <button class="add-to-cart" data-name="Spicy Chicken Pickle" data-price="180" data-image="/static/spicy chicken pickle.jpg">Add to Cart</button>
+    </div>
+
+    <div style="background: #333; padding: 20px; border-radius: 10px; text-align: center;">
+      <img src="/static/mutton pickle 2.jpg" alt="Mutton Pickle" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+      <h3 style="color: white; margin-top: 15px;">Andhra Mutton Pickle</h3>
+      <p style="color: #ccc;">Rich, spicy mutton pickle with aromatic masalas.</p>
+      <p style="color: red; font-weight: bold;">₹220 / 250g</p>
+      <button class="add-to-cart" data-name="Andhra Mutton Pickle" data-price="220" data-image="/static/mutton pickle 2.jpg">Add to Cart</button>
+    </div>
+
+    <div style="background: #333; padding: 20px; border-radius: 10px; text-align: center;">
+      <img src="/static/prawnpickle2-681x1024.jpg" alt="Prawn Pickle" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+      <h3 style="color: white; margin-top: 15px;">Prawn Pickle</h3>
+      <p style="color: #ccc;">Juicy prawns in tangy and spicy Andhra-style preparation.</p>
+      <p style="color: red; font-weight: bold;">₹200 / 200g</p>
+      <button class="add-to-cart" data-name="Prawn Pickle" data-price="200" data-image="/static/prawnpickle2-681x1024.jpg">Add to Cart</button>
+    </div>
+
+  </div>
+
+  <!-- Snacks -->
+  <h2 style="color: red; font-size: 32px; margin-bottom: 20px;">Snacks</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+
+    <div style="background: #333; padding: 20px; border-radius: 10px; text-align: center;">
+      <img src="/static/murukku-recipe.webp" alt="Murukku" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+      <h3 style="color: white; margin-top: 15px;">Crispy Murukku</h3>
+      <p style="color: #ccc;">Traditional South Indian snack made with rice flour.</p>
+      <p style="color: red; font-weight: bold;">₹70 / 150g</p>
+      <button class="add-to-cart" data-name="Crispy Murukku" data-price="70" data-image="/static/murukku-recipe.webp">Add to Cart</button>
+    </div>
+
+    <div style="background: #333; padding: 20px; border-radius: 10px; text-align: center;">
+      <img src="/static/Banana-Chips-Blog.jpg" alt="Banana Chips" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+      <h3 style="color: white; margin-top: 15px;">Banana Chips</h3>
+      <p style="color: #ccc;">Crisp banana slices fried in coconut oil.</p>
+      <p style="color: red; font-weight: bold;">₹80 / 100g</p>
+      <button class="add-to-cart" data-name="Banana Chips" data-price="80" data-image="/static/Banana-Chips-Blog.jpg">Add to Cart</button>
+    </div>
+
+    <div style="background: #333; padding: 20px; border-radius: 10px; text-align: center;">
+      <img src="/static/karasev-3.jpg" alt="Kara Sev" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+      <h3 style="color: white; margin-top: 15px;">Spicy Kara Sev</h3>
+      <p style="color: #ccc;">Crispy, spicy sev made from chickpea flour.</p>
+      <p style="color: red; font-weight: bold;">₹75 / 150g</p>
+      <button class="add-to-cart" data-name="Spicy Kara Sev" data-price="75" data-image="/static/karasev-3.jpg">Add to Cart</button>
+    </div>
+
+    <div style="background: #333; padding: 20px; border-radius: 10px; text-align: center;">
+      <img src="/static/besan-ladoo.jpg" alt="Ladoo" style="width: 100%; height: 180px; object-fit: cover; border-radius: 8px;">
+      <h3 style="color: white; margin-top: 15px;">Homemade Besan Ladoo</h3>
+      <p style="color: #ccc;">Sweet, nutty and healthy – made with ghee and love.</p>
+      <p style="color: red; font-weight: bold;">₹100 / 4 pcs</p>
+      <button class="add-to-cart" data-name="Homemade Besan Ladoo" data-price="100" data-image="/static/besan-ladoo.jpg">Add to Cart</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- JavaScript: LocalStorage Cart -->
+<script>
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', () => {
+      const name = button.dataset.name;
+      const price = parseInt(button.dataset.price);
+      const image = button.dataset.image;
+
+      const existingItem = cart.find(item => item.name === name);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ name, price, image, quantity: 1 });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${name} added to cart!`);
+    });
+  });
+</script>

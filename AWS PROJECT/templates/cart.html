@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart - Home Pickles</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #111;
+      color: white;
+      padding: 0 20px 40px;
+    }
+
+    nav {
+      background-color: #222;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 5px rgba(255, 0, 0, 0.3);
+    }
+
+    nav h2 {
+      color: red;
+    }
+
+    .nav-button {
+      background: none;
+      border: 2px solid red;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 5px;
+      margin-left: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-button:hover {
+      background-color: red;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 30px 0 20px;
+      color: red;
+    }
+
+    .cart-container {
+      max-width: 1000px;
+      margin: auto;
+      background-color: #222;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+
+    .item-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .item-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .item-details span {
+      margin-bottom: 5px;
+    }
+
+    .item-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .item-actions input {
+      width: 50px;
+      padding: 5px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .remove-btn {
+      background-color: red;
+      border: none;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .remove-btn:hover {
+      background-color: darkred;
+    }
+
+    .total {
+      text-align: right;
+      font-size: 20px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .buy-now {
+      display: block;
+      margin: 20px auto 0;
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .buy-now:hover {
+      background-color: darkred;
+    }
+
+    @media (max-width: 600px) {
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .item-actions {
+        margin-top: 10px;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav .nav-links {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <h2>Home Pickles</h2>
+    <div class="nav-links">
+      <a href="{{ url_for('home') }}"><button class="nav-button">Home</button></a> 
+      <a href="{{ url_for('shop') }}"><button class="nav-button">Shop</button></a>
+    </div>
+  </nav>
+
+  <h1>Your Cart</h1>
+
+  <div class="cart-container" id="cart">
+    <div class="cart-item" data-price="200">
+      <div class="item-info">
+        <div class="item-details">
+          <span class="item-name">Mango Pickle</span>
+          <span class="item-price">₹200</span>
+        </div>
+      </div>
+      <div class="item-actions">
+        <input type="number" min="1" value="1" class="item-quantity">
+        <button class="remove-btn">Remove</button>
+      </div>
+    </div>
+
+    <div class="cart-item" data-price="150">
+      <div class="item-info">
+        <div class="item-details">
+          <span class="item-name">Lemon Pickle</span>
+          <span class="item-price">₹150</span>
+        </div>
+      </div>
+      <div class="item-actions">
+        <input type="number" min="1" value="2" class="item-quantity">
+        <button class="remove-btn">Remove</button>
+      </div>
+    </div>
+
+    <div class="total" id="cart-total">Total: ₹500</div>
+    <a href="{{ url_for('buynow') }}" class="buy-now">Buy Now</a>
+  </div>
+
+  <script>
+    function updateTotal() {
+      const cartItems = document.querySelectorAll('.cart-item');
+      let total = 0;
+      cartItems.forEach(item => {
+        const price = parseInt(item.dataset.price);
+        const quantity = parseInt(item.querySelector('.item-quantity').value);
+        total += price * quantity;
+      });
+      document.getElementById('cart-total').textContent = `Total: ₹${total}`;
+    }
+
+    document.querySelectorAll('.item-quantity').forEach(input => {
+      input.addEventListener('input', updateTotal);
+    });
+
+    document.querySelectorAll('.remove-btn').forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.target.closest('.cart-item').remove();
+        updateTotal();
+      });
+    });
+
+    updateTotal(); // Initial total
+  </script>
+
+</body>
+</html>

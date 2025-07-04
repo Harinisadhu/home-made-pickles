@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You</title>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .thank-you {
+      background-color: #222;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+    }
+
+    h1 {
+      color: red;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkred;
+    }
+  </style>
+</head>
+<body>
+  <div class="thank-you">
+    <h1>Thank You!</h1>
+    <p>Your feedback has been received. We appreciate your thoughts!</p>
+    <button onclick="window.location.href='/home';">Back to Home</button>
+  </div>
+
+  <script>
+    function goHome() {
+      window.location.href = "home.html"; // direct static path to home page
+    }
+  </script>
+</body>
+</html>
